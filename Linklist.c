@@ -7,19 +7,13 @@
 
 #include<stdio.h>
 #include<stdlib.h>
-#include<Linklist.h>
-typedef struct _tag_LinkList
-{
-	//带头节点的链表
-	LinkListNode header;
-	int length;
-}TLinkList;
+#include"Linklist.h"
 LinkList* LinkList_Create(){
 	TLinkList *tlink=(TLinkList *)malloc(sizeof(TLinkList));
 	if(tlink==NULL){
 		return NULL;
 	}
-	tlink->header=NULL;
+	tlink->header.next=NULL;
 	tlink->length=0;
 	return tlink;
 }
@@ -51,7 +45,7 @@ int LinkList_Length(LinkList* list){
 	if(list==NULL){
 		return -1;
 	}
-	return (TLinkList *)list->length;
+	return ((TLinkList *)list)->length;
 }
 
 int LinkList_Insert(LinkList* list, LinkListNode* node, int pos){
@@ -68,7 +62,7 @@ int LinkList_Insert(LinkList* list, LinkListNode* node, int pos){
 	node->next=tmp->next;
 	tmp->next=node;
 	tlink->length++;
-	return tlink;
+	return 0;
 }
 
 LinkListNode* LinkList_Get(LinkList* list, int pos){

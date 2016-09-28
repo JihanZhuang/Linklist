@@ -15,6 +15,14 @@ typedef struct _tag_LinkListNode
 	struct _tag_LinkListNode* next;
 }LinkListNode;
 
+typedef struct _tag_LinkList                                                                                                                                            
+{
+    //带头节点的链表
+    LinkListNode header;
+    int length;
+}TLinkList;
+
+
 LinkList* LinkList_Create();
 
 void LinkList_Destroy(LinkList* list);
